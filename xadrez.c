@@ -4,6 +4,7 @@ int main(){
 
     int contadorBispo = 0;
     int contadorRainha = 0;
+    int contadorCavalo = 1;
 
     printf("\nMovendo a TORRE 5 vezes para a Direita.\n");
     // Mover a torre 5 casas para a Direita usando FOR
@@ -16,8 +17,8 @@ int main(){
     printf("\nMovendo o BISPO 5 vezes na diagonal Direita.\n");
     // Mover o bispo 5 casas na diagonal Direita usando WHILE
 
-    while (contadorBispo < 5){
-
+    while (contadorBispo < 5)
+    {
         printf("\nCima - Direita\n"); // direcao do movimento
         contadorBispo++;
 
@@ -33,6 +34,20 @@ int main(){
         contadorRainha++;
 
     }while(contadorRainha < 8);
+
+    printf("\n===============================================\n");
+
+    printf("\nMovendo o CAVALO em L, Baixo Baixo Esquerda.\n");
+
+    while (contadorCavalo--)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            printf("\nBaixo\n");
+        }
+        printf("\nEsquerda");
+    }
+    
 
     return 0;
 }
