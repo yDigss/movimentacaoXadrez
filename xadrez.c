@@ -1,53 +1,74 @@
 #include <stdio.h>
 
+void moverTorre(int i){
+    if (i > 0){
+        printf("\nDireita \n");
+
+        moverTorre (i - 1);
+    }
+}
+
+void bispo(int casas, int passo) {
+    if (passo == casas) return; 
+
+    for (int vertical = 0; vertical < 1; vertical++) { // loop externo
+        for (int horizontal = 0; horizontal < 1; horizontal++) { // loop interno
+            printf("\nCima - ");
+            printf("Direita\n");
+        }
+    }
+
+    bispo(casas, passo + 1);
+}
+
+
+void moverRainha(int casas) {
+    if (casas == 0) return; 
+    printf("\nEsquerda\n");
+    moverRainha(casas - 1);
+}
+
+void moverCavalo(int movimentos){
+    for (int m = 0; m < movimentos; m++){
+        for (int vertical = 0; vertical < 2; vertical++){
+            printf("\nCima \n");
+        }
+
+        for (int horizontal = 0; horizontal < 2; horizontal++){
+            if (horizontal == 1) break;
+            printf("\nDireita \n");
+        }
+    }
+}
+
 int main(){
 
-    int contadorBispo = 0;
-    int contadorRainha = 0;
+    int contadorTorre = 5;
+    int casasBispo = 5;
+    int contadorRainha = 8;
     int contadorCavalo = 1;
 
-    printf("\nMovendo a TORRE 5 vezes para a Direita.\n");
-    // Mover a torre 5 casas para a Direita usando FOR
-    for (int contadorTorre = 0; contadorTorre < 5; contadorTorre++){
-        printf("\nDireita\n"); // Direçao do movimento
-    }
+
+    printf("\nMovendo a TORRE 5 vezes para a Direita: \n");
+    moverTorre(contadorTorre);
 
     printf("\n===============================================\n");
 
-    printf("\nMovendo o BISPO 5 vezes na diagonal Direita.\n");
-    // Mover o bispo 5 casas na diagonal Direita usando WHILE
+    printf("\nMovendo o BISPO 5 vezes na diagonal Direita: \n");
 
-    while (contadorBispo < 5)
-    {
-        printf("\nCima - Direita\n"); // direcao do movimento
-        contadorBispo++;
-
-    }
+    bispo(casasBispo, 0);
 
     printf("\n===============================================\n");
 
     printf("\nMovendo a RAINHA 8 vezes para a Esquerda.\n");
 
-    do{
-
-        printf("\nEsquerda\n");
-        contadorRainha++;
-
-    }while(contadorRainha < 8);
+    moverRainha(contadorRainha);
 
     printf("\n===============================================\n");
 
-    printf("\nMovendo o CAVALO em L, Baixo Baixo Esquerda.\n");
+    printf("\nMovendo o CAVALO em L, Cima Cima Direita.\n");
 
-    while (contadorCavalo--)
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            printf("\nBaixo\n");
-        }
-        printf("\nEsquerda");
-    }
-    
+    moverCavalo(contadorCavalo);
 
     return 0;
 }
